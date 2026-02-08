@@ -1,0 +1,51 @@
+@import "style-index.css";
+.registration-form {
+  font-family: Manrope;
+  margin: 0 auto;
+  width: 800px;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid rgb(239 34 157);
+}
+
+.registration-form ul {
+  list-style: none;
+}
+
+legend {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2em;
+}
+
+li {
+  margin: 10px;
+  padding: 10px;
+}
+
+ul {
+  justify-content: center;
+  text-align: center;
+}
+
+#password, #email, #confirm-password, #confirm-email, #firstname, #lastname {
+  text-align: left;
+  border: 1px solid rgb(239 34 157);
+  border-radius: 1em;
+  width: 100%;
+  max-width: 300px;
+  padding: 5px;
+}
+
+.btn-minscrire {
+  background-color: white;
+  border: 1px solid rgb(239 34 157);
+  border-radius: 1em;
+  padding: 8px;
+}
+
+.btn-minscrire:hover {
+  background-color: rgb(255 113 12);
+  color: white;
+  cursor: pointer;
+}
