@@ -1,0 +1,259 @@
+* {
+    margin: 0;/*Suprime toutes les marges par défaut*/
+    padding: 0;/*Supprime tous les espaces internes par défaut*/
+}/*Chaque navigateur applique par défaut des marges et paddings, comme ça je pars d'une base propre avant d'appliquer mon style*/
+
+/* ---------- NAVBAR ---------- */
+.logo {
+    font-family: "Mansalva", sans-serif;
+    font-size: 300%;
+    cursor: pointer;
+}
+.logo .orange {
+    color: rgb(255 113 12);
+}
+header {
+    background: rgb(255 221 197);
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+main {
+  margin-top: 80px; /* pour éviter que le hero passe sous le header */
+}
+
+nav {
+    display: flex;               
+    justify-content: space-between; /* logo à gauche, menu à droite */
+    align-items: center;                       
+    height: 100%;/* même hauteur que header */
+    background-color: white;
+}
+
+.nav-links {
+    display: flex;        
+    align-items: center;         
+    gap: 30px;  
+}
+
+.nav-links button, .nav-links a {
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+    color: black;
+    border: solid 2px rgb(255 113 12);
+    border-radius: 15px;
+    padding: 10px 15px;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+html {
+    scroll-behavior: smooth;/*Animations plus fluides=effet plus agréable pour l'utilisateur*/
+}
+
+
+/* ------------- MENU MOBILE EN BAS ---------------- */
+.mobile-menu {
+  display: none; /* caché par défaut (ordinateur) */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  border-top: 2px solid rgb(255 113 12);
+  justify-content: space-around;
+  align-items: center;
+  z-index: 999;
+}
+
+.mobile-item {
+  text-decoration: none;
+  color: black;
+  font-family: 'Manrope', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.mobile-item i {
+  font-size: 1.5rem;
+  margin-bottom: 3px;
+}
+
+/* ----------- VERSION MOBILE UNIQUEMENT ----------- */
+@media (max-width: 768px) {
+
+  /* Masquer le menu du haut */
+  .nav-links {
+    display: none;
+  }
+
+  header {
+    background: white;
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 200%;
+  }
+
+  /* Montrer menu mobile */
+  .mobile-menu {
+    display: flex;
+  }
+
+  /* Masquer sections non souhaitées sur mobile */
+  .cards-section,
+  footer {
+    display: none;
+  }
+}
+
+/* ---------- BANNIÈRE-HERO ---------- */
+
+.hero {
+    height: 100vh;
+    background-image: url('../../images/DSCF2097.JPG');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem; /* espace entre le texte et le bouton */
+    margin-top: 500px;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    
+}
+.btn-destin {
+    font-weight: bold;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    
+}
+.btn-destin .material-symbols-outlined {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+
+/* ---------- SECTION CARDS ---------- */
+.cards-section {
+    padding: 10rem;
+    background-color: rgb(255 221 197);
+    padding-right: 5rem;
+}
+.cards-grid {
+    display: grid;
+    grid-template-columns:  repeat(auto-fit, minmax(200px, 1fr)); /* déjà responsive*/ /* autofit: essaie de mettre autant de colonnes que possible dans la largeur disponible.Dans un grand écran,plusieurs colonnes. Dans un petit écran, moins de colonnes, voire une seule-- minimun 200px et maximum 1fr (prend toute la place disponible). Si l'écran ets large, les colonnes sont larges. Si l'écran est étroit, elles se réduisent, mais jamais en dessous de 200px */
+    gap: 1.5rem;
+    justify-content: center;
+}
+.card {/*J'applique du NESTING pour que ce soit un code mieux lisible*/
+    border: solid 2px rgb(255 113 12);
+    border-radius: 10px;
+    overflow: hidden; /*coupe tout se qui dépasse*/
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;/*Animation CSS*/
+    min-height: 260px;
+    width: 60%;
+    
+    &.card-image { /*C'est la meme chose que .card.card-image, & représente le selecteur parent .card*/
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+   
+   }
+   &.card-description {
+    font-size: 1rem;
+    color:black;
+    font-family: 'Manrope', sans-serif;
+    }   
+}
+
+.card-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0, 0.2);
+}
+.card-image img {
+    width: 100%;
+    max-width:150px;
+    height: 160px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+/*----------FOOTER-----------*/
+.container-footer h3 {
+    border-bottom: 1px solid;
+    
+    
+}
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.container-footer p {
+    max-width: 300px;
+    
+}
+.footer {
+    padding: 20px 0px 20px 20px;
+}
+.icons-social img {
+    
+    object-fit: cover;
+    max-width:50px;
+    height: 50px;
+}
+.icons-social {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* ---------- CSS avec JS : btn-explorer et son menu deroulant---------- */
+.dropdown-content {
+    display: none; /* menu caché */
+    position: absolute;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    border: white;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(255 113 12);
+    color: white;
+}
