@@ -77,7 +77,7 @@ class Article {
     // METHODES
     public function readArticleByIdDestination():array {
         try {
-            $query = $this->getBDD()->prepare('SELECT id_article, title, content, thumbnail, creation_date, id_user, id_Destination FROM article WHERE id_Destination = ?');
+            $query = $this->getBDD()->prepare('SELECT id_article, title, content, thumbnail, creation_date, id_user, id_destination FROM article WHERE id_destination = ?');
             $idDestination = $this->getIdDestination();
             $query->bindParam(1, $idDestination, PDO::PARAM_INT);
             $query->execute();
@@ -92,10 +92,10 @@ class Article {
 
     public function readArticleByDestinationTitle(string $destinationTitle):array {
         try {
-            $query = $this->getBDD()->prepare('SELECT a.id_article, a.title, a.content, a.thumbnail, a.creation_date, a.id_user, a.idDestination FROM article a INNER JOIN destination d ON a.idDestination = d.idDestination WHERE d.title = ?');
+            $query = $this->getBDD()->prepare('SELECT a.id_article, a.title, a.content, a.thumbnail, a.creation_date, a.id_user, a.id_destination FROM article a INNER JOIN destination d ON a.id_destination = d.id_destination WHERE d.title = ?');
             $query->bindParam(1, $destinationTitle, PDO::PARAM_STR);
             $query->execute();
-            $data = $query->fetch(PDO::FETCH_ASSOC);
+            $data = $query->fetchAll(PDO::FETCH_ASSOC); // Utiliser fetchAll car il peut y avoir plusieurs articles
             
             return $data;
             
@@ -108,11 +108,14 @@ class Article {
 
     public function readArticleById(): array {
         try {
-            $query = $this->getBDD()->prepare('SELECT a.id_article, a.title, a.content, a.thumbnail, a.creation_date, u.firstname, u.lastname, d.id_destination, d.title as destination_title 
-                                             FROM article a 
-                                             LEFT JOIN user u ON a.id_user = u.id_user 
-                                             LEFT JOIN destination d ON a.id_destination = d.id_destination
-                                             WHERE a.id_article = ?');
+            $query = $this->getBDD()->prepare('
+                SELECT a.id_article, a.title, a.content, a.thumbnail, a.creation_date, a.id_user, a.id_destination, 
+                       u.firstname, u.lastname, d.title as destination_title
+                FROM article a 
+                LEFT JOIN user u ON a.id_user = u.id_user 
+                JOIN destination d ON a.id_destination = d.id_destination
+                WHERE a.id_article = ?
+            ');
             $id = $this->getIdArticle();
             $query->bindParam(1, $id, PDO::PARAM_INT);
             $query->execute();
@@ -122,6 +125,16 @@ class Article {
         }
     }
 
+    // --- ADD ARTICLE ---
+    public function addArticle(string $title, string $content, int $id_user, int $id_destination): bool {
+        try {
+            $query = "INSERT INTO article (title, content, id_user, id_destination, creation_date) VALUES (?, ?, ?, ?, NOW())";
+            $req = $this->getBDD()->prepare($query);
+            return $req->execute([$title, $content, $id_user, $id_destination]);
+        } catch (Exception $error) {
+            die($error->getMessage());
+        }
+    }
 }
 
 ?>

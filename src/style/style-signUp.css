@@ -28,7 +28,7 @@ ul {
   text-align: center;
 }
 
-#password, #email, #confirm-password, #confirm-email, #firstname, #lastname {
+#password, #email, #confirm-password, #confirm-email, #firstname, #lastname, #title {
   text-align: left;
   border: 1px solid rgb(239 34 157);
   border-radius: 1em;
