@@ -28,5 +28,26 @@ class UserModel {
         $req->execute([$email]);
         return (bool)$req->fetch();
     }
+
+    // --- GET USER BY ID ---
+    public function getUserById(int $id) {
+        $query = "SELECT * FROM user WHERE id_user = ?";
+        $req = $this->bdd->prepare($query);
+        $req->execute([$id]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // --- UPDATE USER INFO ---
+    public function updateUserInfo(int $id, string $email, string $password = null): bool {
+        if ($password) {
+            $query = "UPDATE user SET email = ?, psswrd = MD5(?) WHERE id_user = ?";
+            $req = $this->bdd->prepare($query);
+            return $req->execute([$email, $password, $id]);
+        } else {
+            $query = "UPDATE user SET email = ? WHERE id_user = ?";
+            $req = $this->bdd->prepare($query);
+            return $req->execute([$email, $id]);
+        }
+    }
 }
 ?>
