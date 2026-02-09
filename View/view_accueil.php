@@ -19,8 +19,9 @@ class AccueilView {
         $cardsInfos = $destination->getRandomDestination(4);
         $cards = '';
         foreach ($cardsInfos as $card) {
+        $img = !empty($card['thumbnail']) ? "<img src='images/".$card['thumbnail']."' alt='".$card['title']."'>" : "";
             $cards .= "<a href='destination.php?id=".$card['id_destination']."' class='card card-image'>
-                        <img src='images/".$card['thumbnail']."' alt='".$card['title']."'>
+                        $img
                         <p class='card-description'>".$card['title']."</p>
                      </a>";
         }

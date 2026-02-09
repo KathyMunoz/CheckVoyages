@@ -9,7 +9,13 @@ class DestinationView {
     }
 
     public function renderDestination(array $destination, array $articles): string {
-        $html = "<div class='destination-header' style='background-image: url(\"images/".$destination['thumbnail']."\"); background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'>";
+        $imgHeader = "";
+        if (!empty($destination['thumbnail'])) {
+            $imgHeader = "style='background-image: url(\"images/".$destination['thumbnail']."\"); background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'";
+        } else {
+            $imgHeader = "style='background-color: #f0f0f0; height: 300px; display: flex; align-items: center; justify-content: center; color: #333;'";
+        }
+        $html = "<div class='destination-header' $imgHeader>";
         $html .= "<h1>".$destination['title']."</h1>";
         $html .= "</div>";
 
