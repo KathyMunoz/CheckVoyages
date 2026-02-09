@@ -55,3 +55,48 @@ if (btnPopularLinks.length > 0 && cardsGrid) {
         });
     });
 }
+
+// --- WIDGET MÉTÉO (AJAX) ---
+const weatherWidget = document.getElementById("weather-widget");
+
+if (weatherWidget) {
+    const city = weatherWidget.getAttribute("data-city");
+    
+    if (city) {
+        const apiKey = '66547f2fe3624ef949d841b39be0ec5d';
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric&lang=fr`;
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error('Ville non trouvée ou erreur API');
+                return response.json();
+            })
+            .then(data => {
+                const temp = Math.round(data.main.temp);
+                const description = data.weather[0].description;
+                const icon = data.weather[0].icon;
+                const humidity = data.main.humidity;
+
+                weatherWidget.innerHTML = `
+                    <div class="weather-container">
+                        <div class="weather-info-left">
+                            <h3>Météo à ${data.name}</h3>
+                            <p class="weather-description">${description}</p>
+                        </div>
+                        <div class="weather-main">
+                            <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}" class="weather-icon">
+                            <span class="weather-temp">${temp}°C</span>
+                        </div>
+                        <div class="weather-humidity-box">
+                            <p>Humidité</p>
+                            <p class="weather-humidity-value">${humidity}%</p>
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                console.error('Erreur Météo:', error);
+                weatherWidget.innerHTML = `<p class="weather-error">Météo indisponible</p>`;
+            });
+    }
+}
