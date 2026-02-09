@@ -89,7 +89,7 @@ class Header {
                             ".$this->renderExplorer()."
                         </div><!-- container vide pour le menu qui s'affiche au click -->
                     </div>
-                    <a href='#btn-popular-destinations'>Destinations populaires</a>
+                    <a href='index.php#btn-popular-destinations' class='nav-popular'>Destinations aléatoires</a>
                     ".$linkSession."
                 </div>
             </nav>
@@ -97,7 +97,7 @@ class Header {
         <!-- VERSION MENU MOBILE EN BAS -->
         <div class='mobile-menu'>
             <a href='#' class='mobile-item'><i class='fa-solid fa-compass'></i><span>Explorer</span></a><!--balise i: Lien Font Awesome transforme balise i en icônes -->
-            <a href='#' class='mobile-item'><i class='fa-solid fa-fire'></i><span>Populaires</span></a>
+            <a href='index.php#btn-popular-destinations' class='mobile-item nav-popular'><i class='fa-solid fa-dice'></i><span>Aléatoires</span></a>
             ".$mobileLinkSession."
         </div>
         <script>
