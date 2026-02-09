@@ -19,9 +19,17 @@ class DestinationView {
         $html .= "<h1>".$destination['title']."</h1>";
         $html .= "</div>";
 
-        $html .= "<section class='destination-content' style='padding: 50px; font-family: \"Manrope\", sans-serif;'>";
+        $html .= "<section class='destination-content' style='padding: 50px; font-family: \"Manrope\", sans-serif; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;'>";
+        $html .= "<div style='flex: 2;'>";
         $html .= "<h2>À propos de ".$destination['title']."</h2>";
         $html .= "<p>".$destination['content']."</p>";
+        $html .= "</div>";
+        
+        // Widget Météo (Conteneur)
+        $html .= "<div id='weather-widget' data-city='".htmlspecialchars($destination['title'], ENT_QUOTES)."' style='flex: 1; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); min-width: 250px; text-align: center;'>";
+        $html .= "<p style='color: #888;'>Chargement de la météo...</p>";
+        $html .= "</div>";
+        
         $html .= "</section>";
 
         if (!empty($articles)) {
