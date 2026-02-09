@@ -47,8 +47,18 @@ class Header {
         $mobileLinkSession = '';
 
         if (isset($_SESSION['login'])) {
-            $linkSession = '<a href="./signOut.php">Deconnexion</a>';
-            $mobileLinkSession = '<a href="./signOut.php" class="mobile-item"><i class="fa-solid fa-user-slash"></i><span>Deconnexion</span></a>';
+            $linkSession = '
+            <div class="dropdown">
+                <button id="btn-account">Mon Compte</button>
+                <div id="menuAccount" class="dropdown-content">
+                    <a href="profile.php">Mes infos</a>
+                    <a href="addArticle.php">Ajouter un article</a>
+                </div>
+            </div>
+            <a href="./signOut.php">Deconnexion</a>';
+            $mobileLinkSession = '
+            <a href="profile.php" class="mobile-item"><i class="fa-solid fa-user-gear"></i><span>Mon Compte</span></a>
+            <a href="./signOut.php" class="mobile-item"><i class="fa-solid fa-user-slash"></i><span>Deconnexion</span></a>';
         } else {
             $linkSession = '<a href="./signIn.php">Connexion</a>
             <a href="./signUp.php">S\'inscrire</a>';
@@ -90,6 +100,22 @@ class Header {
             <a href='#' class='mobile-item'><i class='fa-solid fa-fire'></i><span>Populaires</span></a>
             ".$mobileLinkSession."
         </div>
+        <script>
+            const btnAccount = document.getElementById('btn-account');
+            const menuAccount = document.getElementById('menuAccount');
+
+            if (btnAccount && menuAccount) {
+                btnAccount.addEventListener('click', () => {
+                    menuAccount.style.display = menuAccount.style.display === 'block' ? 'none' : 'block';
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (e.target !== btnAccount && !menuAccount.contains(e.target)) {
+                        menuAccount.style.display = 'none';
+                    }
+                });
+            }
+        </script>
         <main> ";
     }
 }
