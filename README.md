@@ -20,3 +20,4 @@ Cette version est une refonte en y ajoutant du PHP + MySQL.
 - [x] Ajouter un article : 2 menu déroulant pour selectionner Groupe et Destination + saisie du titre + saisie de l'article + publier (case à cocher?).
 - [ ] Developpement d'une fonctionnalité de commentaires sous les articles pour les utilisateurs connectés (BDD OK)
 - [ ] Ajout d'une API tierce (OpenStreetMap? OpenWeatherMap?)
+- [x] Ajout d'une méthode AJAX pour le chargement des cartes / destinations aléatoires
