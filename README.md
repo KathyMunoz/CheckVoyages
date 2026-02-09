@@ -15,8 +15,8 @@ Cette version est une refonte en y ajoutant du PHP + MySQL.
 - [x] Developpement des fonctionnalités utilisateur (création de compte, connexion)
 - [x] Developpement de l'arborescence utilisateur (Groupe > Destination > Article)*
 - [x] Developpement d'une rotation aléatoire des destinations sur la page d'accueil
-- [] Ajout d'un bouton "Mon Compte" avec 2 choix: Mes infos et Ajouter un article
-- [] Mes infos : nom, prenom, pseudo, mail, mdp ...
-- [] Ajouter un article : 2 menu déroulant pour selectionner Groupe et Destination + saisie du titre + saisie de l'article + publier (case à cocher?).
-- [] Developpement d'une fonctionnalité de commentaires sous les articles pour les utilisateurs connectés (BDD OK)
-- [] Ajout d'une API tierce (OpenStreetMap? OpenWeatherMap?)
+- [x] Ajout d'un bouton "Mon Compte" avec 2 choix: Mes infos et Ajouter un article
+- [x] Mes infos : nom, prenom, pseudo, mail, mdp ...
+- [x] Ajouter un article : 2 menu déroulant pour selectionner Groupe et Destination + saisie du titre + saisie de l'article + publier (case à cocher?).
+- [ ] Developpement d'une fonctionnalité de commentaires sous les articles pour les utilisateurs connectés (BDD OK)
+- [ ] Ajout d'une API tierce (OpenStreetMap? OpenWeatherMap?)
