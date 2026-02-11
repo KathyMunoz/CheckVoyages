@@ -25,7 +25,7 @@ const cardsGrid = document.querySelector(".cards-grid");
 if (btnPopularLinks.length > 0 && cardsGrid) {
     btnPopularLinks.forEach(link => {
         link.addEventListener("click", (e) => {
-            // Vérifie si on est déjà sur la page d'accueil (index.php ou racine)
+            // Vérifie si l'utilisateur est déjà sur la page d'accueil 
             const isHomePage = window.location.pathname.endsWith("index.php") || window.location.pathname.endsWith("/");
             
             if (isHomePage) {
@@ -34,7 +34,7 @@ if (btnPopularLinks.length > 0 && cardsGrid) {
                 // Ajout d'une petite animation de fondu
                 cardsGrid.style.opacity = "0.5";
                 
-                fetch("ajax_random_destinations.php")
+                fetch("ajax_random_destinations.php") // fetch va chercher le fichier php
                     .then(response => {
                         if (!response.ok) throw new Error('Network response was not ok');
                         return response.text();

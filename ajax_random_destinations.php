@@ -8,7 +8,7 @@ try {
     $accueilView = new AccueilView();
     $accueilView->setBdd($bdd);
 
-    // On ne renvoie que le HTML des cartes aléatoires
+    // Renvoie que le HTML des cartes aléatoires
     echo $accueilView->renderRandomCards();
 } catch (Exception $e) {
     echo "Erreur lors du chargement des destinations.";

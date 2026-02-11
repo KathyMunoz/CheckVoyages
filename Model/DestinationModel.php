@@ -93,13 +93,13 @@ class Destination {
         try {
             // Je prépare ma requête pour obtenir une destination aléatoire
             $query = $this->getBDD()->prepare('SELECT id_destination, title, thumbnail FROM destination ORDER BY RAND() LIMIT ?');
-            // Binding du paramètre
+            // Binding du paramètre, prépare et découpe ma requête une par une
             $query->bindParam(1, $number, PDO::PARAM_INT);
             // Execution de la requête
             $query->execute();
             // Je récupère le résultat
             $data = $query->fetchAll(PDO::FETCH_ASSOC);
-            // Je crée un nouvel objet Destination pour retourner la destination aléatoire
+            // La réponse de Fetch est gardé dans $data
             return $data;
         } catch (Exception $error) {
             die($error->getMessage());
