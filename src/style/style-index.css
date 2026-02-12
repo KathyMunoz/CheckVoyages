@@ -183,15 +183,12 @@ html {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-   
+        font-size: 1rem;
+        color: black;
+        font-family: 'Manrope', sans-serif;
+        text-decoration: none;
    }
-   &.card-description {
-    font-size: 1rem;
-    color:black;
-    font-family: 'Manrope', sans-serif;
-    }   
 }
-
 .card-image:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0,0,0, 0.2);
