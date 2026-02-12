@@ -26,6 +26,14 @@ INSERT INTO destination (id_destination, id_destinationGroup, title, content, th
 (8, 4, "New York", "La ville qui ne dort jamais, de Central Park à l'Empire State Building.", "new-york.jpg", NOW()),
 (9, 4, "Calgary", "Ville canadienne au pied des Rocheuses, célèbre pour son Stampede et sa nature sauvage.", "calgary.jpg", NOW());
 
+INSERT INTO destination (id_destination, id_destinationGroup, title, content, thumbnail, publication_date) VALUES
+(10,4, "San Francisco", "San Francisco est une ville emblématique de la côte ouest des États-Unis, située en Californie.", "san-francisco.jpg", NOW()),
+(11,3, "Quito", "La capitale de l’Équateur, située à plus de 2 800 mètres d’altitude dans la cordillère des Andes.", "quito.jpg", NOW()),
+(12,2, "Bangkok", "Bangkok est la capitale de la Thaïlande et un centre culturel et économique majeur d’Asie du Sud-Est.", "bangkok.jpg", NOW()),
+(13,2, "Singapour", "La ville est célèbre pour Marina Bay Sands, les jardins spectaculaires de Gardens by the Bay et son impressionnante skyline.", "singapour.jpg", NOW()),
+(14,5, "Auckland", "Surnommée la Ville des Voiles, elle est réputée pour son front de mer animé, ses plages et ses nombreuses activités nautiques.", "auckland.jpg", NOW()),
+(15,5, "Melbourne", "Célèbre pour ses ruelles décorées de street art, ses cafés branchés et ses nombreux festivals, elle est considérée comme la capitale culturelle de l’Australie.", "melbourne.jpg", NOW());
+
 -- 4. Insertion des articles (entre 1 et 3 par destination)
 INSERT INTO article (title, content, thumbnail, creation_date, id_user, id_destination) VALUES
 -- Toulouse
@@ -35,8 +43,8 @@ INSERT INTO article (title, content, thumbnail, creation_date, id_user, id_desti
 ("Visite du Prado", "Une collection d'art incroyable, prévoyez au moins une demi-journée pour voir les chefs-d'œuvre de Velázquez et Goya. Le musée est immense et chaque salle réserve des surprises. C'est un passage obligé pour tout amateur d'art visitant la capitale espagnole. N'oubliez pas de réserver vos billets à l'avance pour éviter les longues files d'attente à l'entrée.", "madrid-article-2.jpg", NOW(), 3, 2),
 -- Paris
 ("Flânerie dans le Marais", "Les petites rues de ce quartier historique cachent de vrais trésors : des hôtels particuliers somptueux, des boutiques de créateurs et des galeries d'art. La place des Vosges est l'endroit idéal pour faire une pause au calme. C'est un quartier qui a su préserver son âme tout en devenant l'un des plus branchés de la capitale. Un vrai bonheur pour les promeneurs.", NULL, NOW(), 1, 3),
-("Paris vue d'en haut", "Monter au sommet de l'Arc de Triomphe offre une vue unique sur les Champs-Élysées et la tour Eiffel. On peut admirer l'organisation parfaite des douze avenues qui partent de la place de l'Étoile. C'est encore plus impressionnant au coucher du soleil quand les lumières de la ville commencent à s'allumer. Une expérience incontournable pour saisir l'immensité de Paris.", "paris-article.jpg", NOW(), 2, 3),
-("Le Louvre de nuit", "La pyramide éclairée est tout simplement magique le soir, loin de la foule de la journée. Les reflets sur les bassins d'eau ajoutent une touche de poésie à l'ensemble. C'est le moment idéal pour une balade romantique ou pour prendre des photos spectaculaires de l'architecture. Le calme qui règne sur la place du Carrousel à cette heure-là est très ressourçant.", NULL, NOW(), 3, 3),
+("Paris vue d'en haut", "Monter au sommet de l'Arc de Triomphe offre une vue unique sur les Champs-Élysées et la tour Eiffel. On peut admirer l'organisation parfaite des douze avenues qui partent de la place de l'Étoile. C'est encore plus impressionnant au coucher du soleil quand les lumières de la ville commencent à s'allumer. Une expérience incontournable pour saisir l'immensité de Paris.", NULL, NOW(), 2, 3),
+("Le Louvre de nuit", "La pyramide éclairée est tout simplement magique le soir, loin de la foule de la journée. Les reflets sur les bassins d'eau ajoutent une touche de poésie à l'ensemble. C'est le moment idéal pour une balade romantique ou pour prendre des photos spectaculaires de l'architecture. Le calme qui règne sur la place du Carrousel à cette heure-là est très ressourçant.", "paris-article.jpg", NOW(), 3, 3),
 -- Sydney
 ("Surf à Bondi Beach", "Les vagues étaient parfaites ce matin. Une expérience inoubliable pour tout surfeur, débutant ou confirmé ! L'ambiance sur la plage est électrique dès le lever du soleil. Après la session, rien de tel qu'un petit-déjeuner dans l'un des nombreux cafés avec vue sur l'océan. La randonnée côtière de Bondi à Coogee offre également des paysages à couper le souffle.", "sydney-article.jpg", NOW(), 1, 4),
 -- Guayaquil
