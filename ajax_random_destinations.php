@@ -1,9 +1,10 @@
 <?php
+include './env.php';
 include './Model/DestinationModel.php';
 include './View/view_accueil.php';
 
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=checkvoyages;charset=utf8mb4', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $bdd = new PDO('mysql:host='.$_ENV['db_host'].';dbname='.$_ENV['db_name'].';charset=utf8mb4',$_ENV['db_user'],$_ENV['db_pwd'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
     $accueilView = new AccueilView();
     $accueilView->setBdd($bdd);

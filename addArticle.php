@@ -1,5 +1,6 @@
 <?php
 // import des ressources
+include './env.php';
 include './utils/functions.php';
 include './Model/DestinationGroupModel.php';
 include './Model/DestinationModel.php';
@@ -16,7 +17,7 @@ if (!isset($_SESSION['id_user'])) {
 
 // Ajax check for destinations
 if (isset($_GET['action']) && $_GET['action'] == 'getDestinations' && isset($_GET['id_group'])) {
-    $bdd = new PDO('mysql:host=localhost;dbname=checkvoyages;charset=utf8mb4', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $bdd = new PDO('mysql:host='.$_ENV['db_host'].';dbname='.$_ENV['db_name'].';charset=utf8mb4',$_ENV['db_user'],$_ENV['db_pwd'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     $destinationModel = new Destination($bdd);
     $destinations = $destinationModel->listDestinationsByGroup((int)$_GET['id_group']);
     header('Content-Type: application/json');
@@ -36,7 +37,7 @@ class AddArticleController {
 
     // CONSTRUCTOR
     public function __construct() {
-        $this->bdd = new PDO('mysql:host=localhost;dbname=checkvoyages;charset=utf8mb4', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $this->bdd = new PDO('mysql:host='.$_ENV['db_host'].';dbname='.$_ENV['db_name'].';charset=utf8mb4',$_ENV['db_user'],$_ENV['db_pwd'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         $this->header = new Header();
         $this->header->setTitle($this->title);
         $this->header->setStyle($this->headerStyle);
