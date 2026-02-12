@@ -1,21 +1,22 @@
 <?php
 // import des ressources
 include './env.php';
-include './utils/functions.php';
-include './Model/DestinationGroupModel.php';
+include './utils/functions.php';// fonctions de sécurité
+include './Model/DestinationGroupModel.php';// modéles pour parler à la BDD
 include './Model/DestinationModel.php';
 include './Model/ArticleModel.php';
-include './View/header.php';
+include './View/header.php';// pour affichage
 include './View/view_add_article.php';
 include './View/footer.php';
 
-// Verification connection
+// Verification connection (barrière de sécurité)
 if (!isset($_SESSION['id_user'])) {
     header('Location: signIn.php');
     exit();
 }
 
-// Ajax check for destinations
+// Ajax: utilisateur choisi le continent de destination dans le formulaire
+//bloc AJAX montre la page ne se recharge pas en totalité quand l'utilisateur choisi le continent et après la ville
 if (isset($_GET['action']) && $_GET['action'] == 'getDestinations' && isset($_GET['id_group'])) {
     $bdd = new PDO('mysql:host='.$_ENV['db_host'].';dbname='.$_ENV['db_name'].';charset=utf8mb4',$_ENV['db_user'],$_ENV['db_pwd'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     $destinationModel = new Destination($bdd);
@@ -48,9 +49,9 @@ class AddArticleController {
     }
 
     // METHODS
-    public function handleAddArticle() {
-        if (isset($_POST['article-submit'])) {
-            if (!isset($_POST['finished'])) {
+    public function handleAddArticle() { //permet d'enregistrer l'article dans ma BDD après avoir cliquer sur le bouton pour enregistrer l'article
+        if (isset($_POST['article-submit'])) { //vérification de la bonne réception du formulaire
+            if (!isset($_POST['finished'])) { // Vérification de case coché
                 echo "<p style='color:red; text-align:center;'>Veuillez cocher la case indiquant que l'article est fini avant de publier.</p>";
                 return;
             }
@@ -71,7 +72,7 @@ class AddArticleController {
         }
     }
 
-    public function displayAddArticle() {
+    public function displayAddArticle() {//affichage de ma page pour écrire l'article à ajouter
         $groupModel = new DestinationGroup($this->bdd);
         $groups = $groupModel->readDestinationGroups();
 
@@ -88,7 +89,7 @@ class AddArticleController {
     }
 }
 
-$addArticleController = new AddArticleController();
+$addArticleController = new AddArticleController();//traitement du formulaire
 $addArticleController->handleAddArticle();
-$addArticleController->displayAddArticle();
+$addArticleController->displayAddArticle();//affichage de la page (formulaire vide ou message succès/erreur)
 ?>

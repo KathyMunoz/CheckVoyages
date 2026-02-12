@@ -125,10 +125,10 @@ class Article {
         }
     }
 
-    // --- ADD ARTICLE ---
+    // --- ADD ARTICLE à la BDD---
     public function addArticle(string $title, string $content, int $id_user, int $id_destination): bool {
         try {
-            $query = "INSERT INTO article (title, content, id_user, id_destination, creation_date) VALUES (?, ?, ?, ?, NOW())";
+            $query = "INSERT INTO article (title, content, id_user, id_destination, creation_date) VALUES (?, ?, ?, ?, NOW())";// mesure de sécurité // Les données de l'utilisateur ne sont jamais concaténées directement dans la requête
             $req = $this->getBDD()->prepare($query);
             return $req->execute([$title, $content, $id_user, $id_destination]);
         } catch (Exception $error) {
