@@ -1,6 +1,5 @@
--- Création de la base de données compatible avec tout les caractères 
-DROP DATABASE IF EXISTS checkvoyages;
-CREATE DATABASE checkvoyages CHARSET utf8mb4;
+-- Création de la base de données compatible avec tout les caractères
+CREATE DATABASE IF NOT EXISTS checkvoyages CHARSET utf8mb4;
 
 USE checkvoyages;
 

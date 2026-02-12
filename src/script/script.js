@@ -1,3 +1,4 @@
+import { API_CONFIG } from './config.js';
 // --- MENU EXPLORER ---
 const btnExplorer = document.getElementById("btn-explorer");
 const menuExplorer = document.getElementById("menuExplorer");
@@ -63,7 +64,7 @@ if (weatherWidget) {
     const city = weatherWidget.getAttribute("data-city");
     
     if (city) {
-        const apiKey = '66547f2fe3624ef949d841b39be0ec5d';
+        const apiKey = API_CONFIG.WEATHER_KEY;
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric&lang=fr`;
 
         fetch(url)

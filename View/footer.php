@@ -68,7 +68,6 @@ class Footer {
                 ".$this->getSocials()."
             </section>
         </footer>
-        <script src='./src/script/script.js'></script><!-- chemin relatif depuis le HTML vers mon fichier script.js -->
     </body>
 </html>";
     }
