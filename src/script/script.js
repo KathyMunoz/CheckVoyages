@@ -83,7 +83,7 @@ if (weatherWidget) {
                 const icon = data.weather[0].icon;
                 const humidity = data.main.humidity;
 
-                weatherWidget.innerHTML = `
+                const html = `
                     <div class="weather-container">
                         <div class="weather-info-left">
                             <h3>Météo à ${data.name}</h3>
@@ -99,10 +99,13 @@ if (weatherWidget) {
                         </div>
                     </div>
                 `;
+
+                const cleanHtml = DOMPurify.sanitize(html);
+                weatherWidget.innerHTML = cleanHtml;
             })
             .catch(error => {
                 console.error('Erreur Météo:', error);
                 weatherWidget.innerHTML = `<p class="weather-error">Météo indisponible</p>`;
             });
-    }
+    } 
 }
