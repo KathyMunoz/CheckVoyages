@@ -13,7 +13,7 @@ include './View/footer.php';
 class SignInController {
     // ATTRIBUTES
     private string $title = 'CheckVoyages';
-    private string $style = './src/style/style-signin.css';
+    private string $style = './src/style/style-signIn.css';
     private string $headerStyle = './src/style/style-index.css';
     private PDO $bdd;
     private Header $header;
