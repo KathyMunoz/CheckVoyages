@@ -1,4 +1,6 @@
-import { API_CONFIG } from './config.js';
+import { API_CONFIG } from './config.js';//import key de mon API météo
+import DOMPurify from './dompurify.js';
+//import librarie pour nettoyage innerHTML utilisé pour ajouter les cards
 // --- MENU EXPLORER ---
 const btnExplorer = document.getElementById("btn-explorer");
 const menuExplorer = document.getElementById("menuExplorer");
@@ -27,7 +29,8 @@ if (btnPopularLinks.length > 0 && cardsGrid) {
     btnPopularLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             // Vérifie si l'utilisateur est déjà sur la page d'accueil 
-            const isHomePage = window.location.pathname.endsWith("index.php") || window.location.pathname.endsWith("/");
+            const isHomePage = window.location.pathname.endsWith("index.php") 
+            || window.location.pathname.endsWith("/");
             
             if (isHomePage) {
                 e.preventDefault(); // Empêche le rechargement de la page
@@ -41,7 +44,9 @@ if (btnPopularLinks.length > 0 && cardsGrid) {
                         return response.text();
                     })
                     .then(html => {
-                        cardsGrid.innerHTML = html;
+                        // utilisation de DOMPurify importé au début du fichier js
+                        const cleanHtml = DOMPurify.sanitize(html);
+                        cardsGrid.innerHTML = cleanHtml;
                         cardsGrid.style.opacity = "1";
                         // Scroll doux vers la section
                         document.getElementById("btn-popular-destinations").scrollIntoView({ behavior: "smooth" });
