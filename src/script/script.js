@@ -40,7 +40,7 @@ if (btnPopularLinks.length > 0 && cardsGrid) {
                 
                 fetch("ajax_random_destinations.php") // fetch va chercher le fichier php
                     .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
+                        if (!response.ok) throw new Error('Problème avec la connexion');
                         return response.text();
                     })
                     .then(html => {
@@ -54,7 +54,7 @@ if (btnPopularLinks.length > 0 && cardsGrid) {
                     .catch(error => {
                         console.error('Erreur AJAX:', error);
                         cardsGrid.style.opacity = "1";
-                        // Rollback silencieux : si AJAX échoue, on laisse le lien fonctionner normalement (refresh classique)
+                        // Rollback silencieux : si AJAX échoue, je laisse le lien fonctionner normalement (refresh classique)
                         window.location.reload();
                     });
             }
