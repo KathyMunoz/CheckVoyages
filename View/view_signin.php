@@ -17,12 +17,12 @@ class SignInView {
     public function renderSignIn(): string {
         return "<main class='image-login-container'>
                     <div class='login'>
-                        <h2 class='login'>Se connecter à Check<span class='orange'>V</span>oyages</h2>
+                        <h2 class='login-text'>Se connecter à Check<span class='orange'>V</span>oyages</h2>
                         <form class='btns-connection' action='' method='POST'>
                             <label for='email'>Adresse e-mail </label>
-                            <input type='email' id='email' name='email' size='30' required placeholder='Votre email' class='btn'/>
+                            <input type='email' id='email' name='email' size='30' required placeholder='Votre email..' class='btn'/>
                             <label for='pass'>Mot de passe </label>
-                            <input type='password' id='pass' name='password' minlength='8' required class='btn'/>
+                            <input type='password' id='pass' name='password' minlength='8' required placeholder='Votre mot de passe...' class='btn'/>
                             <label for='rememberme'>
                                 <input type='checkbox' name='rememberme' value='forever' checked='checked' id='rememberme' tabindex='13' /> Se souvenir de moi
                             </label>

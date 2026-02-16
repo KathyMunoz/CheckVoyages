@@ -30,6 +30,9 @@ class AccueilView {
     public function renderAccueil(): string {
         return "<section class='hero'>
                 <div class='hero-content'>
+                    <h1>Explorez le monde avec nous</h1>
+                    <h2>Partagez vos souvenirs</h2>
+                    <p>Des destinations insolites vous attendent</p>
                 </div>
             </section>
             <section class='cards-section' id='btn-popular-destinations'>
