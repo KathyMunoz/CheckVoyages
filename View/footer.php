@@ -10,13 +10,10 @@ class Footer {
                     <h3>Conditions</h3>
                     <p>Notice légales</p>
                     <p>CGU</p>
-                    <p>Cookies</p>
                 </div>";
     private string $containerInfos = "<div class='container-footer'>
                     <h3>Infos</h3>
-                    <p>01 44 22 11 22</p>
-                    <p>(Nos conseillers sont à votre écoute)<br> 
-                9h-23h du lundi au samedi <br> 10h-23h dimanche Pour nous appeller depuis l'étranger, cliquer ici</p>
+                    <p>Nous contacter</p>
                 </div>";
     private string $containerSocials = "<div class='icons-social'>
                     <img src='images/icon-instagram.png'alt='icon reseaux sociaux instagram'>
