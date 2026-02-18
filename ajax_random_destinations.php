@@ -9,7 +9,7 @@ try {
     $accueilView = new AccueilView();
     $accueilView->setBdd($bdd);
 
-    // Renvoie que le HTML des cartes aléatoires
+    // Renvoie que le HTML des cartes aléatoires (et pas toute la page)
     echo $accueilView->renderRandomCards();
 } catch (Exception $e) {
     echo "Erreur lors du chargement des destinations.";
